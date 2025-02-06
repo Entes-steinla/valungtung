@@ -1,0 +1,125 @@
+:root {
+  --heart-angle: 45deg;
+  --heart-fill: #c03;
+  --heart-size: 1.5em; /* scale() causes blurry artifacts */
+  --glow-fill: rgba(204, 0, 51, 0.5);
+  --glow-size: calc(var(--heart-size) * 0.8);
+  --glow-size-fix: calc(var(--heart-size) / 5);
+  --beat-contracted: translate(-50%, -50%) rotate(calc(var(--heart-angle)));
+  --beat-less-expanded: translate(-50%, -50%) scale(1.1)
+    rotate(calc(var(--heart-angle)));
+  --beat-more-expanded: translate(-50%, -50%) scale(1.15)
+    rotate(calc(var(--heart-angle)));
+  --beat-resting-duration: 1s; /* 60bpm */
+  --beat-excited-duration: 0.66s; /* 90bpm */
+  --beat-omfg-duration: 0.27s; /* 220bpm */
+}
+
+@keyframes heart-beat {
+  10% {
+    transform: var(--beat-contracted);
+  }
+  40% {
+    transform: var(--beat-more-expanded);
+  }
+  50% {
+    transform: var(--beat-contracted);
+  }
+  60% {
+    transform: var(--beat-less-expanded);
+  }
+  90% {
+    transform: var(--beat-contracted);
+  }
+}
+
+.heart .-layer::before,
+.heart .-layer::after,
+.heart .-layer,
+.heart {
+  height: var(--heart-size);
+  width: var(--heart-size);
+  position: absolute;
+}
+
+.heart {
+  left: 50%;
+  top: 50%;
+}
+
+.heart {
+  animation: heart-beat var(--beat-resting-duration) ease-in-out infinite both;
+  transform: var(--beat-contracted);
+  /* will-change: transform; */
+}
+
+.heart .-layer::before,
+.heart .-layer::after {
+  border-radius: calc(var(--heart-size) / 2);
+  content: "";
+  display: block;
+}
+.heart .-layer::before {
+  top: -50%;
+}
+.heart .-layer::after {
+  left: -50%;
+}
+
+.heart .shape.-layer::before,
+.heart .shape.-layer::after,
+.heart .shape.-layer {
+  background: var(--heart-fill);
+  transition: background 0.3s ease-out;
+}
+
+.heart .glow {
+  box-shadow: 0 0 var(--glow-size) var(--glow-fill);
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+  /* will-change: opacity; */
+}
+.heart .glow::before,
+.heart .glow::after {
+  box-shadow: 0 0 var(--glow-size) var(--glow-size-fix) var(--glow-fill);
+}
+.heart .glow.--excited {
+  --glow-fill: rgba(204, 0, 51, 0.7);
+  --glow-size: calc(var(--heart-size) * 1.6);
+  opacity: 0;
+}
+
+.heart:hover {
+  --heart-fill: #f36;
+  animation-duration: var(--beat-excited-duration);
+  cursor: pointer;
+}
+.heart .glow,
+.heart:hover .glow {
+  opacity: 0;
+}
+.heart .glow.--excited,
+.heart:hover .glow.--excited {
+  opacity: 1;
+}
+
+.heart:active {
+  --heart-fill: #ffccd9;
+  animation-duration: var(--beat-omfg-duration);
+  cursor: wait;
+  transition: none; /* not perfect */
+}
+.heart:active .glow.--excited {
+  --glow-fill: rgba(255, 204, 217, 0.5);
+}
+.heart {
+  position: relative;
+}
+.coa {
+  position: absolute;
+  z-index: 999;
+  rotate: -45deg;
+  left: 0%;
+  top: -13%;
+  transform: translate(-24%, -14%);
+}

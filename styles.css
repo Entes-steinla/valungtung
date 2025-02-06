@@ -1,0 +1,75 @@
+.pacifico-regular {
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-color: #f9e3e3;
+  background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5pcnVvd2h0YzJ5d3BhYXVkMjY2ZXlwbGNpZXBoMnMzaDJrN2dsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  user-select: none;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  /* color: #d32f2f; */
+  color: #fff;
+  background-color: rgba(171, 81, 168, 0.53);
+  padding: 10px;
+  border-radius: 999px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.yes-button {
+  position: relative;
+  font-size: 1.5em;
+  margin-right: 0.5em;
+  color: white;
+  cursor: pointer;
+  /* padding: 10px 20px;
+  background-color: #4caf50;
+  border-radius: 30px; */
+  background-color: transparent;
+  border: none;
+}
+
+.no-button {
+  font-size: 1.5em;
+  padding: 10px 20px;
+  background-color: #325eee;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.gif_container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.yes-button:active,
+.no-button:active {
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}

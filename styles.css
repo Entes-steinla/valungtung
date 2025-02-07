@@ -32,6 +32,7 @@ h1 {
   background-color: rgba(171, 81, 168, 0.53);
   padding: 10px;
   border-radius: 999px;
+  line-height: 1.2;
 }
 
 .buttons {
